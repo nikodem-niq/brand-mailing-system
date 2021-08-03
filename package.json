@@ -1,9 +1,12 @@
 {
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1",
+    "node-cron": "^3.0.0",
     "request": "^2.88.2"
   },
   "scripts": {
-    "start" : "cd src/ && node app.js"
+    "scrap": "cd src/ && node scraper.js",
+    "server": "cd src/ && nodemon server.js"
   }
 }

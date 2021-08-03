@@ -2,8 +2,10 @@ const request = require('request');
 const cheerio = require('cheerio');
 const { html } = require('cheerio/lib/api/manipulation');
 const fs = require('fs');
-let URI = `https://panoramafirm.pl/przemysł`;
+let URI = `https://panoramafirm.pl/`;
 
+//przemysł, produkcja, wytwarzanie, dostawca technologii, dostarczanie, przemysł 4.0, industrializacja
+let brandList = ['produkcja'];
 let companiesList = [];
 let endIndex;
 
@@ -19,8 +21,8 @@ const doRequest = (URI) => {
     })
 }
 
-const getEndIndex = async () => {
-    await doRequest(URI).then(body => {
+const getEndIndex = async (actualBrand) => {
+    await doRequest(`${URI}${actualBrand}`).then(body => {
         let $ = cheerio.load(body);
         let lastURL = $(
           "#company-list-paginator > nav > ul > li.mx-2.mx-lg-1.py-1.card.pagination-item.pagination-last.text-center > a"
@@ -32,16 +34,19 @@ const getEndIndex = async () => {
 }
 
 const initRequest = async() => {
-    await getEndIndex();
-    for(let a=1; a<endIndex; a++) {
-        await doRequest(`https://panoramafirm.pl/przemysł/firmy,${a}.html`).then(body => {
-            const $ = cheerio.load(body);
-            parseDataCompanies($);
-        })
-}}
+    for(let i=0; i<brandList.length; i++) {
+        // console.log(brandList[i]);
+        await getEndIndex(brandList[i]);
+        for(let a=1; a<endIndex; a++) {
+            await doRequest(`https://panoramafirm.pl/${brandList[i]}/firmy,${a}.html`).then(body => {
+                const $ = cheerio.load(body);
+                parseDataCompanies($, brandList[i]);
+            })
+    }
+    }}
 
 let index = 1;
-const parseDataCompanies = ($) => {
+const parseDataCompanies = ($, brand) => {
     let scriptTags = [];
     $('script[type="application/ld+json"]').each((i,e) => {
         scriptTags.push($(e));
@@ -51,6 +56,7 @@ const parseDataCompanies = ($) => {
         if(!(email === undefined || telephone === undefined)) {
             let companyObject = {
                 id: index,
+                brand,
                 name,
                 email,
                 telephone
@@ -59,9 +65,7 @@ const parseDataCompanies = ($) => {
             index++;
         }
     }
-    // console.log(JSON.parse(scriptTags[0][0].children[0].data));
     console.log(companiesList);
-    // companiesList.push(data);
     fs.writeFileSync('../output/companies.json', JSON.stringify(companiesList, null, 4));
 }
 
