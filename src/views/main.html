@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Drogowa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f4f4f4;
+            font-family: Poppins, Arial, Helvetica, sans-serif;
+        }
+
+        .wrapper {
+            width: 100%;
+            background-color: #f0f0f0;
+        }
+
+        .header {
+            width: 100%;
+            padding: 10px 20px 40px;
+            background-color: #181818;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        ul {
+            float: right;
+            margin-top: 15px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .icon {
+            width: 30px;
+        }
+
+        .hero,
+        .footer {
+            background-color: #181818;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 2rem;
+        }
+
+        h2 {
+            color: #181818;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: rgb(75, 75, 75);
+            text-align: justify;
+            font-size: 1rem;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .row {
+            max-width: 550px;
+            margin: 30px auto 0;
+            padding: 0 20px;
+        }
+
+        b {
+            color: #181818;
+        }
+
+        .learn-more {
+            color: #181818;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .learn-more:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            padding: 20px;
+        }
+
+        .footer p {
+            color: white;
+        }
+
+        @media screen and (min-width: 700px) {
+
+            html {
+                font-size: 16px;
+            }
+
+            img,
+            img+div {
+                width: 50%;
+            }
+
+            .reverse {
+                flex-direction: row-reverse;
+            }
+
+            .row {
+                max-width: 100%;
+            }
+
+            .left {
+                float: left;
+            }
+
+            .right {
+                float: right;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <a href="https://soniqanalytics.pl/" target="_blank" class="left">
+                <script data-pagespeed-no-defer>//<![CDATA[
+(function(){for(var g="function"==typeof Object.defineProperties?Object.defineProperty:function(b,c,a){if(a.get||a.set)throw new TypeError("ES3 does not support getters and setters.");b!=Array.prototype&&b!=Object.prototype&&(b[c]=a.value)},h="undefined"!=typeof window&&window===this?this:"undefined"!=typeof global&&null!=global?global:this,k=["String","prototype","repeat"],l=0;l<k.length-1;l++){var m=k[l];m in h||(h[m]={});h=h[m]}
+var n=k[k.length-1],p=h[n],q=p?p:function(b){var c;if(null==this)throw new TypeError("The 'this' value for String.prototype.repeat must not be null or undefined");c=this+"";if(0>b||1342177279<b)throw new RangeError("Invalid count value");b|=0;for(var a="";b;)if(b&1&&(a+=c),b>>>=1)c+=c;return a};q!=p&&null!=q&&g(h,n,{configurable:!0,writable:!0,value:q});var t=this;
+function u(b,c){var a=b.split("."),d=t;a[0]in d||!d.execScript||d.execScript("var "+a[0]);for(var e;a.length&&(e=a.shift());)a.length||void 0===c?d[e]?d=d[e]:d=d[e]={}:d[e]=c};function v(b){var c=b.length;if(0<c){for(var a=Array(c),d=0;d<c;d++)a[d]=b[d];return a}return[]};function w(b){var c=window;if(c.addEventListener)c.addEventListener("load",b,!1);else if(c.attachEvent)c.attachEvent("onload",b);else{var a=c.onload;c.onload=function(){b.call(this);a&&a.call(this)}}};var x;function y(b,c,a,d,e){this.h=b;this.j=c;this.l=a;this.f=e;this.g={height:window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight,width:window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth};this.i=d;this.b={};this.a=[];this.c={}}
+function z(b,c){var a,d,e=c.getAttribute("data-pagespeed-url-hash");if(a=e&&!(e in b.c))if(0>=c.offsetWidth&&0>=c.offsetHeight)a=!1;else{d=c.getBoundingClientRect();var f=document.body;a=d.top+("pageYOffset"in window?window.pageYOffset:(document.documentElement||f.parentNode||f).scrollTop);d=d.left+("pageXOffset"in window?window.pageXOffset:(document.documentElement||f.parentNode||f).scrollLeft);f=a.toString()+","+d;b.b.hasOwnProperty(f)?a=!1:(b.b[f]=!0,a=a<=b.g.height&&d<=b.g.width)}a&&(b.a.push(e),
+b.c[e]=!0)}y.prototype.checkImageForCriticality=function(b){b.getBoundingClientRect&&z(this,b)};u("pagespeed.CriticalImages.checkImageForCriticality",function(b){x.checkImageForCriticality(b)});u("pagespeed.CriticalImages.checkCriticalImages",function(){A(x)});
+function A(b){b.b={};for(var c=["IMG","INPUT"],a=[],d=0;d<c.length;++d)a=a.concat(v(document.getElementsByTagName(c[d])));if(a.length&&a[0].getBoundingClientRect){for(d=0;c=a[d];++d)z(b,c);a="oh="+b.l;b.f&&(a+="&n="+b.f);if(c=!!b.a.length)for(a+="&ci="+encodeURIComponent(b.a[0]),d=1;d<b.a.length;++d){var e=","+encodeURIComponent(b.a[d]);131072>=a.length+e.length&&(a+=e)}b.i&&(e="&rd="+encodeURIComponent(JSON.stringify(B())),131072>=a.length+e.length&&(a+=e),c=!0);C=a;if(c){d=b.h;b=b.j;var f;if(window.XMLHttpRequest)f=
+new XMLHttpRequest;else if(window.ActiveXObject)try{f=new ActiveXObject("Msxml2.XMLHTTP")}catch(r){try{f=new ActiveXObject("Microsoft.XMLHTTP")}catch(D){}}f&&(f.open("POST",d+(-1==d.indexOf("?")?"?":"&")+"url="+encodeURIComponent(b)),f.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),f.send(a))}}}
+function B(){var b={},c;c=document.getElementsByTagName("IMG");if(!c.length)return{};var a=c[0];if(!("naturalWidth"in a&&"naturalHeight"in a))return{};for(var d=0;a=c[d];++d){var e=a.getAttribute("data-pagespeed-url-hash");e&&(!(e in b)&&0<a.width&&0<a.height&&0<a.naturalWidth&&0<a.naturalHeight||e in b&&a.width>=b[e].o&&a.height>=b[e].m)&&(b[e]={rw:a.width,rh:a.height,ow:a.naturalWidth,oh:a.naturalHeight})}return b}var C="";u("pagespeed.CriticalImages.getBeaconData",function(){return C});
+u("pagespeed.CriticalImages.Run",function(b,c,a,d,e,f){var r=new y(b,c,a,e,f);x=r;d&&w(function(){window.setTimeout(function(){A(r)},0)})});})();
+
+pagespeed.CriticalImages.Run('/mod_pagespeed_beacon','https://soniqanalytics.pl/mailing/mapadrogowa/','uu-dirHHNs',true,false,'UMiFk6h_yLw');
+//]]></script><img class="logo" src="https://soniqanalytics.pl/mailing/mapadrogowa/xsoniq-logo.png.pagespeed.ic.dQy9x6MPEi.png" alt="SoniqAnalytics - logo" data-pagespeed-url-hash="175452494" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+            </a>
+            <ul>
+                <li><a href="https://www.facebook.com/SoniqAnalytics-104079108229140" target="_blank"><img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAMAAABhTZc9AAAAQlBMVEUAAACPrzCPrzCSsjWPrzSRsTOPrzWRsTSQsTSRrzWQsDWRrzWQsDSRrzSQsDSRrzSQsDWRrzWQsDWQsDSQrzSRsDXzh9M4AAAAFXRSTlMAECA/QF9gf4+Qn6CvsL/Az9Df7/BYqWgiAAAAr0lEQVQoz4XTyw6EIAwF0Ft8MIiIjPD/vzor0hZJpyvNSbytFKAXbef1tOc6N8JY7mhch9MYmq6PMLrbWDcZKLi0Wd2vzLACyP0FAJxAQGhzACLrqjUCJKIA0LJwj4Rd6yob25EMTZyS+/isGdXQh5+/3gNw3suoauRWzp1o/tOzPS8ZSuo/Dxr1GQ3q9PlqDdZulL5XMy68dsXAyT6H4S5EOYp73RXaU66t5rTzR3+AVy6TUARzdgAAAABJRU5ErkJggg==" alt="Facebook - icon" data-pagespeed-url-hash="3983069266" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                </li>
+            </ul>
+            <div style="clear: both;"></div>
+        </div>
+
+
+
+        <div class="hero">
+            <h1 style="text-align: center; font-weight: 900;">Zyskaj 800 tys. zł z „mapą drogową”!</h1>
+            <img src="https://soniqanalytics.pl/mailing/mapadrogowa/xcomputer.png.pagespeed.ic.8psg4S4_n5.png" alt="Computer illustration" style="width: 100%;" data-pagespeed-url-hash="378462383" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+        </div>
+
+
+        <div class="row">
+            <p>Polska Agencja Rozwoju Przedsiębiorczości ogłosiła konkurs „Przemysł 4.0”, wspierający rozwój małych i
+                średnich polskich firm produkcyjnych, pod kątem procesu transformacji cyfrowej. <br><b>Maksymalna kwota
+                    grantu
+                    to 800 tys. zł.</b></p>
+            <br>
+            <p>Obecna odsłona konkursu kończy się 30 czerwca 2021, ale według zapewnień PARP konkurs będzie
+                kontynuowany. Warunkiem udziału jest posiadanie tzw. „mapy drogowej”.</p>
+        </div>
+
+        <div class="row">
+            <img src="https://soniqanalytics.pl/mailing/mapadrogowa/xmap.png.pagespeed.ic.b8Y5czaKye.png" alt="Map illustration" class="left" data-pagespeed-url-hash="2946246086" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+            <div class="right">
+                <h2>Czym jest „mapa drogowa”?</h2>
+                <p>To plan transformacji przedsiębiorstwa w ramach szeroko pojętego Przemysłu 4.0. Między innymi to:
+                    automatyzacja, systemy wspomagające produkcję, AI/ML, VR/AR, cyberbepieczeństwo sieci przemysłowych,
+                    itp.</p>
+                <br>
+                <p>Jak informuje PARP, ponad 110 mln zł trafi do mikro, małych i średnich przedsiębiorstw w formie
+                    dotacji pod nazwą „Bony na cyfryzację”. Konieczny do tego jest audyt ADMA.
+                </p>
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <div class="row">
+            <img src="https://soniqanalytics.pl/mailing/mapadrogowa/xreport.png.pagespeed.ic.GYQ5iUIzJ4.png" alt="Report illustration" class="right" data-pagespeed-url-hash="282615384" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+            <div class="left">
+                <h2>Czym jest audyt ADMA i jaki jest jego cel? </h2>
+                <p>Wynikiem audytu wewnętrznego firmy według metodologii ADMA (Advanced Manufacturing) jest raport i
+                    opracowanie planu transformacji zgodnie z ideą Przemysłu 4.0. Działania te pomogą również uzyskać
+                    status Fabryki Przyszłości.</p>
+
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <div class="row">
+            <img src="https://soniqanalytics.pl/mailing/mapadrogowa/xwallet.png.pagespeed.ic.7H6YGCPKv3.png" alt="Wallet illustration" class="left" data-pagespeed-url-hash="241026613" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+            <div class="right">
+                <h2>Jak możemy Ci pomóc z pozyskaniem finansowania i „mapą drogową”?</h2>
+                <p>Wybór zewnętrznej firmy pomagającej w transformacji cyfrowej to pełny obiektywizm w doradztwie i
+                    wysokie kompetencje. Zapewnia to SoniqAnalytics i nasz zespół certyfikowanych ekspertów. Od wielu
+                    lat pomagamy
+                    organizacjom w standaryzacji i optymalizacji ich działań, również w zakresie Przemysłu 4.0.</p>
+
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <div class="row" style="margin-bottom: 30px; text-align: center;">
+            <img src="https://soniqanalytics.pl/mailing/mapadrogowa/arrow.png" alt="Arrow - icon" style="width: 20px; margin-right: 10px;" data-pagespeed-url-hash="2208181379" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+            <a href="https://soniqanalytics.pl/przemysl-4-0/" target="_blank" class="learn-more">Dowiedz się więcej o
+                Przemyśle 4.0</a>
+        </div>
+
+
+        <div style="margin: 30px auto; height: auto; width: 300px; text-align: center;">
+            <a href="https://soniqanalytics.pl/mailing/mapadrogowa/#" target="_blank" style="display: inline-block; color: white; background: #91b035; padding: 15px 30px; border-radius: 6px; text-decoration: none;">Wyświetl
+                jako
+                stronę</a>
+        </div>
+
+        <div class="footer">
+            <a href="https://soniqanalytics.pl/" target="_blank"><img src="https://soniqanalytics.pl/mailing/mapadrogowa/120xNxsoniq-logo.png.pagespeed.ic.uGPZC9mHwX.png" alt="SoniqAnalytics - logo" style="width: 120px;" data-pagespeed-url-hash="175452494" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+            <div style="margin-top: 20px;">
+                <p style=" font-weight: bold; margin-bottom: 0;">SoniqAnalytics</p>
+                <div style="float: left;">
+                    <p style="font-size: 14px; margin-top: 5px;">
+                        ul. Rybnicka 64<br>
+                        44-310 Radlin<br>
+                        NIP: 633-223-50-38
+                    </p>
+                </div>
+                <div style="float: right;">
+                    <p style="font-size: 14px; margin-top: 25px;"><a href="tel:+48506942817" style="color: white; text-decoration: none;">+48
+                            506 942 817</a><br>
+                        <a href="mailto:przemysl40@soniqanalytics.pl" style="color: white; text-decoration: none;">przemysl40@soniqanalytics.pl</a>
+                    </p>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -5,9 +5,9 @@ const fs = require('fs');
 let URI = `https://panoramafirm.pl/`;
 
 //przemysł, produkcja, wytwarzanie, dostawca technologii, dostarczanie, przemysł 4.0, industrializacja
-let brandList = ['produkcja'];
+let brandList = ['przemysł'];
 let companiesList = [];
-let endIndex;
+let endIndex = 2;
 
 const doRequest = (URI) => {
     return new Promise((resolve, reject) => {
@@ -29,6 +29,7 @@ const getEndIndex = async (actualBrand) => {
         ).attr("href");
         endIndex = lastURL.slice(lastURL.indexOf(",") + 1, lastURL.indexOf(".html"));
     }).catch(err => {
+        endIndex = 2;
         throw new Error(err);
     })
 }
@@ -36,7 +37,7 @@ const getEndIndex = async (actualBrand) => {
 const initRequest = async() => {
     for(let i=0; i<brandList.length; i++) {
         // console.log(brandList[i]);
-        await getEndIndex(brandList[i]);
+        // await getEndIndex(brandList[i]);
         for(let a=1; a<endIndex; a++) {
             await doRequest(`https://panoramafirm.pl/${brandList[i]}/firmy,${a}.html`).then(body => {
                 const $ = cheerio.load(body);
@@ -45,7 +46,7 @@ const initRequest = async() => {
     }
     }}
 
-let index = 1;
+// let index = 1;
 const parseDataCompanies = ($, brand) => {
     let scriptTags = [];
     $('script[type="application/ld+json"]').each((i,e) => {
@@ -55,17 +56,30 @@ const parseDataCompanies = ($, brand) => {
         let { email, telephone, name } = JSON.parse(scriptTags[i][0].children[0].data);
         if(!(email === undefined || telephone === undefined)) {
             let companyObject = {
-                id: index,
+                id: 1,
                 brand,
                 name,
                 email,
                 telephone
             }
             companiesList.push(companyObject);
-            index++;
+            // index++;
         }
     }
-    console.log(companiesList);
+
+    let temp=[];
+    let index = 1;
+    companiesList=companiesList.filter((x, i)=> {
+      if (temp.indexOf(x.email) < 0) {
+        temp.push(x.email);
+        x.id = index;
+        index++;
+        return true;
+    }
+      return false;
+    })
+     
+    // console.log(companiesList);
     fs.writeFileSync('../output/companies.json', JSON.stringify(companiesList, null, 4));
 }
 
