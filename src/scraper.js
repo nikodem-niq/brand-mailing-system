@@ -36,8 +36,7 @@ const getEndIndex = async (actualBrand) => {
 
 const initRequest = async() => {
     for(let i=0; i<brandList.length; i++) {
-        // console.log(brandList[i]);
-        // await getEndIndex(brandList[i]);
+        await getEndIndex(brandList[i]);
         for(let a=1; a<endIndex; a++) {
             await doRequest(`https://panoramafirm.pl/${brandList[i]}/firmy,${a}.html`).then(body => {
                 const $ = cheerio.load(body);
@@ -46,7 +45,6 @@ const initRequest = async() => {
     }
     }}
 
-// let index = 1;
 const parseDataCompanies = ($, brand) => {
     let scriptTags = [];
     $('script[type="application/ld+json"]').each((i,e) => {
@@ -63,7 +61,6 @@ const parseDataCompanies = ($, brand) => {
                 telephone
             }
             companiesList.push(companyObject);
-            // index++;
         }
     }
 
