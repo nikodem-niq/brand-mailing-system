@@ -7,7 +7,7 @@ let URI = `https://panoramafirm.pl/`;
 //przemysł, produkcja, wytwarzanie, dostawca technologii, dostarczanie, przemysł 4.0, industrializacja
 let brandList = ['przemysł'];
 let companiesList = [];
-let endIndex = 2;
+let endIndex;
 
 const doRequest = (URI) => {
     return new Promise((resolve, reject) => {
