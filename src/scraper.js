@@ -5,7 +5,7 @@ const fs = require('fs');
 let URI = `https://panoramafirm.pl/`;
 
 //przemysł, produkcja, wytwarzanie, dostawca technologii, dostarczanie, przemysł 4.0, industrializacja
-let brandList = ['przemysł'];
+let brandList = [];
 let companiesList = [];
 let endIndex;
 
@@ -43,7 +43,9 @@ const initRequest = async() => {
                 parseDataCompanies($, brandList[i]);
             })
     }
+    companiesList = [];
     }}
+
 
 const parseDataCompanies = ($, brand) => {
     let scriptTags = [];
@@ -77,7 +79,7 @@ const parseDataCompanies = ($, brand) => {
     })
      
     // console.log(companiesList);
-    fs.writeFileSync('../output/companies.json', JSON.stringify(companiesList, null, 4));
+    fs.writeFileSync(`../output/${brand}.json`, JSON.stringify(companiesList, null, 4));
 }
 
 initRequest();
