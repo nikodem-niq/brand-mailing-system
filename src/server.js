@@ -6,14 +6,13 @@ const fs = require('fs');
 const path = require('path');
 const port = process.env.PORT || 5000;
 
-let companies = [];
-fs.readFile('../output/companies.json', (err,file) => {
-    let companiesList = JSON.parse(file);
-    for(company in companiesList) {
-        companies.push(companiesList[company].email);
-    }
-    let receivers = companies.join(',');
-})
+let companies = ['w.ros@soniqsoft.pl', 'm.osak@soniqsoft.pl'];
+// fs.readFile('../output/companies.json', (err,file) => {
+//     let companiesList = JSON.parse(file);
+//     for(company in companiesList) {
+//         companies.push(companiesList[company].email);
+//     }
+// })
 
 
 app.set('views', path.join(__dirname, 'views')); 
