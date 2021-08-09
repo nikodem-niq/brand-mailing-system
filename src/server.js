@@ -5,27 +5,40 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 const port = process.env.PORT || 5000;
+const logger = require('./logger');
 
-let companies = ['w.ros@soniqsoft.pl', 'm.osak@soniqsoft.pl'];
-// fs.readFile('../output/companies.json', (err,file) => {
-//     let companiesList = JSON.parse(file);
-//     for(company in companiesList) {
-//         companies.push(companiesList[company].email);
-//     }
-// })
+let companies = [];
+fs.readFile('../output/companies.json', (err,file) => {
+    let companiesList = JSON.parse(file);
+    for(company in companiesList) {
+        companies.push(companiesList[company].email);
+    }
+    let receivers = companies.join(',');
+})
 
 
 app.set('views', path.join(__dirname, 'views')); 
 app.get('/send', (req,res) => {
-    let testTransport2 = {
-        service: 'gmail',
+    const date = new Date()
+    const today = date.toLocaleDateString()
+    const actualTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+
+    logger.logger.log({
+        level: 'info',
+        message: `=========== LOGGING MAILING FROM: ${today} ${actualTime} ===========`
+    })
+
+    let transport = {
+        port: process.env.SMTP_PORT,
+        host: process.env.SMTP,
+        secure: true,
         auth: {
             user: process.env.EMAIL,
             pass: process.env.EMAIL_PASS
         }
     }
 
-    const transporter = nodeMailer.createTransport(testTransport2)
+    const transporter = nodeMailer.createTransport(transport)
     fs.readFile('views/main.html', function read(err, data) {
         if (err) {
             throw err;
@@ -43,8 +56,18 @@ app.get('/send', (req,res) => {
                 }
             
                 transporter.sendMail(mailOptions, (err, info) => {
-                    console.log(info, err);
-                    res.send(info);
+                    if(err == null){
+                        logger.logger.log({
+                            level: 'info',
+                            message: info
+                        })
+                    } else {
+                        logger.logger.log({
+                            level: 'error',
+                            message: err
+                        })
+                    }
+                    res.send('Mailing service is running. Check output/logs for details.')
                 })
             }
         })
