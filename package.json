@@ -2,8 +2,11 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1",
+    "fs": "^0.0.1-security",
     "nodemailer": "^6.6.3",
-    "request": "^2.88.2"
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "winston": "^3.3.3"
   },
   "scripts": {
     "scrap": "cd src/ && node scraper.js",
