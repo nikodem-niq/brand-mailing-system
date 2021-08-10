@@ -9,14 +9,12 @@ const logger = require('./logger');
 
 let companies = [];
 
-fs.readFile('../output/companies.json', (err,file) => {
+fs.readFile('../output/test.json', (err,file) => {
     let companiesList = JSON.parse(file);
     for(company in companiesList) {
         companies.push(companiesList[company].email);
     }
-    // let receivers = companies.join(',');
 })
-
 
 app.set('views', path.join(__dirname, 'views')); 
 app.get('/send', (req,res) => {
@@ -47,31 +45,43 @@ app.get('/send', (req,res) => {
         let htmlFile = data.toString();
         fs.readFile('views/alt.txt', (err,txt) => {
             let txtFile = txt.toString();
-            for(company in companies) {
-                const mailOptions = {
-                    from: process.env.EMAIL,
-                    to: companies[company],
-                    subject: 'Zyskaj 800 tysiecy z mapa drogowa',
-                    text: txtFile,
-                    html: htmlFile
-                }
-            
-                transporter.sendMail(mailOptions, (err, info) => {
-                    if(err == null){
-                        logger.logger.log({
-                            level: 'info',
-                            message: info
-                        })
-                    } else {
-                        logger.logger.log({
-                            level: 'error',
-                            message: err
-                        })
+                const send = () => {
+                    let i = 0;
+
+                    const loopThrough = () => {
+                        setTimeout(() => {
+                            const mailOptions = {
+                                from: process.env.EMAIL,
+                                to: companies[i],
+                                subject: 'Zyskaj 800 tysiecy z mapa drogowa',
+                                text: txtFile,
+                                html: htmlFile
+                            }
+
+                            transporter.sendMail(mailOptions, (err, info) => {
+                                if(err == null){
+                                    logger.logger.log({
+                                        level: 'info',
+                                        message: info
+                                    })
+                                } else {
+                                    logger.logger.log({
+                                        level: 'error',
+                                        message: err
+                                    })
+                                }
+                                console.log(`Sent to: ${mailOptions.to}`)
+                                console.log('..')
+                            }) 
+                                i++;
+                                if(i < companies.length) {
+                                    loopThrough();
+                                }
+                            }, 150)
                     }
-                    // res.send('Mailing service is running. Check output/logs for details.')
-                    console.log(`Sent to: ${mailOptions.to}`)
-                })
-            }
+                    loopThrough();
+                }
+                send();
         })
     });
 })
