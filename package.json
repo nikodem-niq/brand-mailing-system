@@ -11,6 +11,7 @@
   },
   "scripts": {
     "scrap": "cd src/ && node scraper.js",
-    "server": "cd src/ && nodemon server.js"
+    "server": "cd src/ && nodemon server.js",
+    "echo": "echo test"
   }
 }
