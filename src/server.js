@@ -9,7 +9,7 @@ const logger = require('./logger');
 
 let companies = [];
 
-fs.readFile('../output/test.json', (err,file) => {
+fs.readFile('../output/companies.json', (err,file) => {
     let companiesList = JSON.parse(file);
     for(company in companiesList) {
         companies.push(companiesList[company].email);
@@ -70,10 +70,10 @@ app.get('/send', (req,res) => {
                                         message: err
                                     })
                                 }
-                                console.log(`Sent to: ${mailOptions.to}`)
-                                console.log('..')
+                                // console.log(` Sent to: ${mailOptions.to}`)
                             }) 
-                                i++;
+                            i++;
+                            console.log(`${i}. .. Sent to ${mailOptions.to}`)
                                 if(i < companies.length) {
                                     loopThrough();
                                 }
